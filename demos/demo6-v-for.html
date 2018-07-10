@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Demo 6 v-for</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- Print list from array -->
+		<ul>
+			<li v-for="(car, i) in cars" v-bind:key="car">{{ car }} ({{ i }})</li>
+		</ul>
+		<button v-on:click="cars.push('Nano')">Add New</button>
+		<hr>
+		<!-- Print list from object -->
+		<ul>
+			<li v-for="person in persons">{{ person.Name }}</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="test in persons">
+				<div v-for="(value, key, index) in test">{{ key }}: {{ value }} ({{ index }})</div>
+			</li>
+		</ul>
+		<hr>
+		<span v-for="n in 10">{{ n }}</span>
+		<hr>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				cars: ['Acura', 'Audi', 'Bentley', 'BMW'],
+				persons: [
+					{Name:'Rahul', Age: 30, Color:'red'},
+					{Name:'Prem', Age: 26, Color:'blue'},
+				]
+			}
+		});
+	</script>
+</body>
+</html>

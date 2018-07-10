@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Demo 2</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<style type="text/css">
+		.demo{width: 100px; height: 100px; background-color: gray; display: inline-block; margin:10px;}
+		.red{background-color: red;}
+		.green{background-color: green;}
+		.blue{background-color: blue;}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="demo" v-on:click="attachRed = !attachRed" v-bind:class="divClasses"></div>
+		<div class="demo" v-bind:class="{red: attachRed}"></div>
+		<div class="demo" v-bind:class="color"></div>
+		<hr>
+		<input type="text" v-model="color" />
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				attachRed: false,
+				color: 'green'
+			},
+			computed: {
+				divClasses: function(){
+					return {
+						red: this.attachRed,
+						blue: !this.attachRed
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>

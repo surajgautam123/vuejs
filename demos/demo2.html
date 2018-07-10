@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS Demo 2</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" name="" v-on:input="changeTitle">
+		<h1>{{ title }}</h1>
+		<p>{{ sayHello() }}</p>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				title: 'This is my first VueJs!!'
+			},
+			methods: {
+				changeTitle: function(event){
+					this.title = event.target.value;
+				},
+				sayHello: function(){
+					return 'Hello!!';
+				}
+			}
+		});
+	</script>
+</body>
+</html>
