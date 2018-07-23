@@ -1,5 +1,5 @@
 <template>
-    <h1>Stocks file</h1>
+    <h1>Label Stocks file</h1>
 </template>
 
 <script>

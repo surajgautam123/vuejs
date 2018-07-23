@@ -47,9 +47,8 @@
                 <li>
                     <a href="#dropdown_stock_control" data-toggle="collapse" data-parent="#side-menu"  data-traget="#dropdown_stock_control"><span class="nav-label">Stock Control</span><span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level collapse" id="dropdown_stock_control">
-                        <li><a href="#">Label Stock</a></li>
-                        <li><a href="#">Yarn Stock</a></li>
-                        <li><a href="#">Garment Stock</a></li>
+                        <li><router-link to="/label-stock">Label Stock</router-link></li>
+                        <li><router-link to="/yarn-stock">Yarn Stock</router-link></li>
                     </ul>
                 </li>
                 <li>

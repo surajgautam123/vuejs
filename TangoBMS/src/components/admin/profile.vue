@@ -1,17 +1,18 @@
 <template>
+    <div class="content">
     <div class="row">
         <div class="col-lg-4">
             <div class="hpanel hgreen">
                 <div class="panel-body">
                     <div class="pull-right text-right">
                         <div class="btn-group">
-                            <i class="fa fa-facebook btn btn-default btn-xs"></i>
-                            <i class="fa fa-twitter btn btn-default btn-xs"></i>
-                            <i class="fa fa-linkedin btn btn-default btn-xs"></i>
+                            <a href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook btn btn-default btn-xs"></i></a>
+                            <a href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter btn btn-default btn-xs"></i></a>
+                            <a href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin btn btn-default btn-xs"></i></a>
                         </div>
                     </div>
-                    <img alt="logo" class="img-circle m-b m-t-md" src="images/profile.jpg">
-                    <h3><a href="">Kapil Chhabra</a></h3>
+                    <img alt="logo" class="img-circle m-b m-t-md" src="/dist/profile.jpg">
+                    <h3><a href="">Suraj Gautam</a></h3>
                     <div class="text-muted font-bold m-b-xs">Indore, INDIA</div>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan.
@@ -82,7 +83,7 @@
                                             <td>Patrick Smith</td>
                                             <td>0800 051213</td>
                                             <td>Inceptos Hymenaeos Ltd</td>
-                                            <td><pie-chart data="PieChart5.data" options="PieChart5.options"></pie-chart></td>
+                                            <td><pie-chart :data="[['Blueberry', 44], ['Strawberry', 23]]"></pie-chart></td>
                                             <td>20%</td>
                                             <td>Jul 14, 2013</td>
                                             <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
@@ -93,64 +94,9 @@
                                             <td>Alice Jackson</td>
                                             <td>0500 780909</td>
                                             <td>Nec Euismod In Company</td>
-                                            <td><pie-chart data="PieChart4.data" options="PieChart4.options"></pie-chart></td>
+                                            <td><pie-chart :data="[['Hello', 64], ['Hey', 23]]"></pie-chart></td>
                                             <td>40%</td>
                                             <td>Jul 16, 2013</td>
-                                            <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Betha project</td>
-                                            <td>John Smith</td>
-                                            <td>0800 1111</td>
-                                            <td>Erat Volutpat</td>
-                                            <td><pie-chart data="PieChart3.data" options="PieChart3.options"></pie-chart></td>
-                                            <td>75%</td>
-                                            <td>Jul 18, 2013</td>
-                                            <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Gamma project</td>
-                                            <td>Anna Jordan</td>
-                                            <td>(016977) 0648</td>
-                                            <td>Tellus Ltd</td>
-                                            <td><pie-chart data="PieChart6.data" options="PieChart6.options"></pie-chart></td>
-                                            <td>18%</td>
-                                            <td>Jul 22, 2013</td>
-                                            <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Alpha project</td>
-                                            <td>Alice Jackson</td>
-                                            <td>0500 780909</td>
-                                            <td>Nec Euismod In Company</td>
-                                            <td><pie-chart data="PieChart.data" options="PieChart.options"></pie-chart></td>
-                                            <td>40%</td>
-                                            <td>Jul 16, 2013</td>
-                                            <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Project <small>This is example of project</small></td>
-                                            <td>Patrick Smith</td>
-                                            <td>0800 051213</td>
-                                            <td>Inceptos Hymenaeos Ltd</td>
-                                            <td><pie-chart data="PieChart4.data" options="PieChart4.options"></pie-chart></td>
-                                            <td>20%</td>
-                                            <td>Jul 14, 2013</td>
-                                            <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Gamma project</td>
-                                            <td>Anna Jordan</td>
-                                            <td>(016977) 0648</td>
-                                            <td>Tellus Ltd</td>
-                                            <td><pie-chart data="PieChart3.data" options="PieChart3.options"></pie-chart></td>
-                                            <td>18%</td>
-                                            <td>Jul 22, 2013</td>
                                             <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
                                         </tr>
                                         </tbody>
@@ -223,6 +169,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </template>
 
