@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" v-bind:class="[isActive ? 'show-sidebar' : 'hide-sidebar']">
         <!-- <app-header v-if="authenticated"></app-header> -->
         <div id="header" v-if="authenticated">
 	        <div class="color-line"></div>
@@ -100,6 +100,7 @@
                     username: "sipl",
                     password: "1234"
                 },
+                isActive: true
             }
         },
         mounted() {
@@ -113,7 +114,15 @@
             },
             logout() {
                 this.authenticated = false;
-            }
+            },
+            minimalize(){
+				// Check value
+				if(this.isActive){
+					this.isActive = false;
+				}else{
+					this.isActive = true;
+				}
+			}
         }
     }
 </script>

@@ -25,11 +25,9 @@
                 </div>
             </div>
             <ul class="nav" id="side-menu">
-                <li v-on:click="isActive = !isActive" v-bind:class="{ active: isActive }">
-                	<router-link to="/dashboard"><span class="nav-label">Dashboard</span></router-link>
-            	</li>
-                <li v-on:click="isActive = !isActive" v-bind:class="{ active: isActive }">
-                    <a href="#demo" data-toggle="collapse" data-parent="#side-menu" data-traget="#demo"><span class="nav-label">Database</span><span class="fa arrow"></span> </a>
+                <router-link to="/dashboard" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Dashboard</span></a></router-link>
+
+                <router-link to="/#demo" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a data-toggle="collapse" data-parent="#side-menu" data-traget="#demo"><span class="nav-label">Database</span><span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level collapse" id="demo">
                         <li><a href="#">Factories</a></li>
                         <li><a href="#">Customers</a></li>
@@ -43,13 +41,9 @@
                         <li><a href="#">Requirement Manuals</a></li>
                         <li><a href="#">Size Charts</a></li>
                     </ul>
-                </li>
-                <li v-on:click="isActive = !isActive" v-bind:class="{ active: isActive }">
-                	<router-link to="/costing-list"><span class="nav-label">Costing</span></router-link>
-                </li>
-                <li>
-                    <router-link to="/orders-management"><span class="nav-label">Orders</span></router-link>
-                </li>
+                </router-link>
+                <router-link to="/costing-list" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Costing</span></a></router-link>
+                <router-link to="/orders-management" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Orders</span></a></router-link>
                 <li>
                     <a href="#dropdown_stock_control" data-toggle="collapse" data-parent="#side-menu"  data-traget="#dropdown_stock_control"><span class="nav-label">Stock Control</span><span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level collapse" id="dropdown_stock_control">
@@ -74,7 +68,17 @@
 	export default {
 		data: function() {
             return {
-                isActive: false
+                isActive: true
+            }
+        },
+        methods: {
+            minimalize(){
+                // Check value
+                if(this.isActive){
+                    this.isActive = false;
+                }else{
+                    this.isActive = true;
+                }
             }
         }
 	}
