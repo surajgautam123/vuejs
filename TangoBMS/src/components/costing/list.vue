@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="panel-body">
                     <div class="m-b10 text-right">
-                        <a class="btn btn-primary" title="Add New Costing" ui-sref="costing.sheet" href="#/costing/costing-sheet"><i aria-hidden="true" class="fa fa-plus"></i> Add New Costing</a>
+                      <router-link to="/costing-sheet" class="btn btn-primary" title="Add New Costing"><i aria-hidden="true" class="fa fa-plus"></i> Add New Costing</router-link>
                     </div>
                     <vue-good-table
                         title="Dynamic Table"

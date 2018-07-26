@@ -27,10 +27,10 @@
             <ul class="nav" id="side-menu">
                 <router-link to="/dashboard" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Dashboard</span></a></router-link>
 
-                <router-link to="/#demo" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a data-toggle="collapse" data-parent="#side-menu" data-traget="#demo"><span class="nav-label">Database</span><span class="fa arrow"></span> </a>
+                <li v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a href="#demo" data-toggle="collapse" data-parent="#side-menu" data-traget="#demo"><span class="nav-label">Database</span><span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level collapse" id="demo">
-                        <li><a href="#">Factories</a></li>
-                        <li><a href="#">Customers</a></li>
+                        <li><router-link to="/tango-factories">Tango Factories</router-link></li>
+                        <!-- <li><a href="#">Customers</a></li>
                         <li><a href="#">Freight Forwarders</a></li>
                         <li><a href="#">Trim Suppliers</a></li>
                         <li><a href="#">Label Suppliers</a></li>
@@ -39,12 +39,12 @@
                         <li><a href="#">Print out Labels</a></li>
                         <li><a href="#">Employees</a></li>
                         <li><a href="#">Requirement Manuals</a></li>
-                        <li><a href="#">Size Charts</a></li>
+                        <li><a href="#">Size Charts</a></li> -->
                     </ul>
-                </router-link>
+                </li>
                 <router-link to="/costing-list" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Costing</span></a></router-link>
                 <router-link to="/orders-management" tag="li" v-bind:class="[isActive ? 'no-active' : 'active']" @click="isActive = !isActive"><a><span class="nav-label">Orders</span></a></router-link>
-                <li>
+                <!-- <li>
                     <a href="#dropdown_stock_control" data-toggle="collapse" data-parent="#side-menu"  data-traget="#dropdown_stock_control"><span class="nav-label">Stock Control</span><span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level collapse" id="dropdown_stock_control">
                         <li><router-link to="/label-stock">Label Stock</router-link></li>
@@ -57,7 +57,7 @@
 	                    <li><a href="#">Reports</a></li>
 	                    <li><a href="#">Invoices</a></li>
 	                </ul>
-	            </li>
+	            </li> -->
             </ul>
         </div>
     </aside>

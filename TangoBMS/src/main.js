@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
-
+import Vuelidate from 'vuelidate';
 import App from './App.vue'
 import { routes } from './routes';
 
@@ -18,6 +18,7 @@ Vue.use(VueGoodTable);
 
 
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 const router = new VueRouter({
 	mode: 'history',
@@ -27,5 +28,6 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  validations: {},
   render: h => h(App)
 })
