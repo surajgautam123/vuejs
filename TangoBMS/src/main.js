@@ -26,6 +26,7 @@ const router = new VueRouter({
 	routes
 });
 
+// Root path for http database
 Vue.http.options.root = 'https://tangobms.firebaseio.com/data.json';
 
 new Vue({

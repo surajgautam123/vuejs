@@ -95,6 +95,7 @@
         },
         data() {
             return {
+            	submitted: false,
                 authenticated: false,
                 mockAccount: {
                     username: "sipl",

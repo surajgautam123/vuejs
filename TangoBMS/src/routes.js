@@ -17,7 +17,7 @@ export const routes = [
 	{ path: '/reset-password', component: ResetPassword },
     { path: '/change-password', component: ChangePassword },
 	{ path: '/dashboard', name: "dashboard", component: Dashboard },
-    { path: '/tango-factories', component: DatabaseFactories },
+    { path: '/tango-factories', name: "tango-factories", component: DatabaseFactories },
     { path: '/add-factories', component: AddFactories },
 	{ path: '/portfolio', component: Portfolio },
 	{ path: '/label-stock', component: LabelStock},
@@ -28,13 +28,9 @@ export const routes = [
             name: "login"
         }
     },
-    {
-        path: "/login",
-        name: "login",
-        component: LoginComponent
-    },
-    { path: '/costing-list', component: CostingList},
-    { path: '/costing-sheet', component: CostingSheet},
-    { path: '/orders-management', component: OrdersManagement},
-    { path: '/profile', component: AdminProfile}
+    { path: "/login", name: "login", component: LoginComponent },
+    { path: '/costing-list', component: CostingList },
+    { path: '/costing-sheet', component: CostingSheet },
+    { path: '/orders-management', component: OrdersManagement },
+    { path: '/profile', component: AdminProfile }
 ]
