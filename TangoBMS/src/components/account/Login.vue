@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <pre>{{$v}}</pre>
+    <!-- <pre>{{$v}}</pre> -->
   </div>
 </template>
 <script>

@@ -1,9 +1,10 @@
 <template>
-    <div class="content">
+    <div class="content" id="factoryinfobox">
         <div class="row">
             <div class="col-md-12">
                 <div class="hpanel">
                     <div class="panel-body">
+                        <form @submit.prevent="submit">
                         <div class="row">
                             <div class="field-box col-md-12">
                                 <div class="field-box-title"><h4>Factory's Information</h4></div>
@@ -14,31 +15,35 @@
                                             <input type="text" class="form-control" name="ReferenceNumber" v-model="factoryinfo.referencenumber">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4 col-sm-4">
+                                    <div class="form-group col-md-4 col-sm-4" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Factory Name<span class="error">*</span>:</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="factory_name" maxlength="50" v-model="factoryinfo.factoryname">
+                                            <input type="text" class="form-control" name="factory_name" maxlength="50" v-model.trim="$v.factoryname.$model" />
+                                            <div class="error" v-if="!$v.factoryname.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3">
+                                    <div class="form-group col-md-3 col-sm-3" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Point of Contact<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="contact_person" maxlength="30" v-model="factoryinfo.pointofcontact">
+                                            <div class="error" v-if="!$v.pointofcontact.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3">
+                                    <div class="form-group col-md-3 col-sm-3" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Designation<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <input type="text" class="form-control" name="designation" maxlength="30" v-model="factoryinfo.designation">
+                                            <div class="error" v-if="!$v.designation.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6 col-sm-6 clear-l">
+                                    <div class="form-group col-md-6 col-sm-6 clear-l" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Email<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <input type="email" class="form-control" name="email" maxlength="70" v-model="factoryinfo.email">
+                                            <div class="error" v-if="!$v.email.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3 p-r0">
+                                    <div class="form-group col-md-3 col-sm-3 p-r0" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Contact Number<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <div class="col-md-5 p-lr0">
@@ -48,6 +53,7 @@
                                             </div>
                                             <div class="col-md-7">
                                                 <input type="text" class="form-control" name="contact_number" v-model="factoryinfo.contactnumber">
+                                                <div class="error" v-if="!$v.contactnumber.required && submitStatus === 'ERROR'">Required</div>
                                             </div>
                                         </div>
                                     </div>
@@ -57,10 +63,11 @@
                             <div class="field-box col-md-12">
                                 <div class="field-box-title"><h4>Factory Address</h4></div>
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-sm-6">
+                                    <div class="form-group col-md-6 col-sm-6" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Address Line 1<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <textarea class="form-control" name="addressline1" v-model="factoryinfo.addressline1"></textarea>
+                                            <div class="error" v-if="!$v.addressline1.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6">
@@ -70,31 +77,35 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-3 col-sm-3 clear-l">
+                                    <div class="form-group col-md-3 col-sm-3 clear-l" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Country<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <select name="country" class="form-control" v-model="factoryinfo.country">
                                                 <option value="">Select Country</option>
                                                 <option value="">India</option>
                                             </select>
+                                            <div class="error" v-if="!$v.country.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3">
+                                    <div class="form-group col-md-3 col-sm-3" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">State/County<span class="error">*</span>:</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" v-model="factoryinfo.state">                                            
+                                            <input type="text" class="form-control" v-model="factoryinfo.state">
+                                            <div class="error" v-if="!$v.state.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3">
+                                    <div class="form-group col-md-3 col-sm-3" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">City<span class="error">*</span>:</label>
                                         <div class="col-md-12">
                                             <input type="text" name="city" class="form-control" maxlength="30" v-model="factoryinfo.city">
+                                            <div class="error" v-if="!$v.city.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 col-sm-3">
+                                    <div class="form-group col-md-3 col-sm-3" :class="{ 'form-group--error': $v.factoryname.$error }">
                                         <label class="col-md-12">Zip/Post Code<span class="error">*</span>:</label>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <input type="text" class="form-control" name="zipcode" maxlength="7" v-model="factoryinfo.zipcode">
+                                            <div class="error" v-if="!$v.zipcode.required && submitStatus === 'ERROR'">Required</div>
                                         </div>
                                     </div>
                                 </div>
@@ -104,49 +115,15 @@
                                 <button title="Cancel" type="button" ui-sref="database.factories" class="btn btn-primary btn-mrn"><i class="fa fa-times"></i>Cancel</button>
                             </div>
                         </div>
+                        </form>
                         <hr>
                         <button class="btn btn-primary btn-mrn" @click="fetchData">Get Data</button>
-                        <br><br>
-                        <div class="vgt-responsive">
-                        <!--List of factories-->
-                        <table class="table table-striped table-bordered table-hover hidden" id="factorytable">
-                          <thead>
-                            <tr>
-                              <th class="vgt-left-align sorting"><span>Ref. No.</span></th>
-                              <th class="vgt-left-align sorting"><span>Factory Name</span></th>
-                              <th class="vgt-right-align sorting"><span>Point of Contact</span></th>
-                              <th class="vgt-right-align sorting"><span>Designation</span></th>
-                              <th class="vgt-right-align sorting"><span>Country</span></th>
-                              <th class="vgt-right-align sorting"><span>Email</span></th>
-                              <th class="vgt-left-align sorting"><span>Contact No.</span></th>
-                              <th class="vgt-right-align sorting"><span>Total Orders</span></th>
-                              <th class="vgt-right-align sorting"><span>Action</span></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr v-for="factory in factoryinfos">
-                              <td width="10%">{{factory.referencenumber}}</td>
-                              <td>{{factory.factoryname}}</td>
-                              <td width="15%">{{factory.pointofcontact}}</td>
-                              <td>{{factory.designation}}</td>
-                              <td>{{factory.country}}</td>
-                              <td nowrap="true"><a href="mailto:">{{factory.email}}</a></td>
-                              <td width="10%">{{factory.contactnumber}}</td>
-                              <td width="10%" nowrap="true">{{factory.addressline1}}</td>
-                              <td nowrap="true" width="1%">
-                                  <div class="btn-group">
-                                  <a id="dLabel" data-target="#" href="javascript:void(0);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="fa fa-bars"></i></a>
-                                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                  <li><a href="javascript:void(0)" title="View"><i class="fa fa-paste"></i> View</a></li>
-                                  <li><a href="javascript:void(0)" title="Edit"><i class="fa fa-pencil"></i> Edit</a></li>
-                                  <li><a href="javascript:void(0)" title="Delete"><i class="fa fa-trash-o"></i> Delete</a></li>
-                                  </ul>
-                                  </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="factory in factoryinfos">
+                                {{factory.referencenumber}}<br>
+                                {{factory.factoryname}}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -172,24 +149,63 @@
                     city: '',
                     zipcode: ''
                 },
+                submitStatus: null,
                 factoryinfos: []
                 // resource: {},
                 // node: 'data'
             };
         },
+        validations: {
+            factoryname: {
+                required,
+                minLength: minLength(4)
+            },
+            pointofcontact: {
+                required
+            },
+            designation: {
+                required
+            },
+            email: {
+                required
+            },
+            contactnumber: {
+                required
+            },
+            addressline1: {
+                required
+            },
+            country: {
+                required
+            },
+            state: {
+                required
+            },
+            city: {
+                required
+            },
+            zipcode:{
+                required
+            }
+        },
         methods: {
             submit() {
                 //console.log(this.factoryinfo);
-                this.$http.post('', this.factoryinfo)
+                if (this.$v.$invalid) {
+                    this.submitStatus = 'ERROR'
+                }
+                else if(this.username == this.$parent.mockAccount.username && this.password == this.$parent.mockAccount.password){
+                    // do your submit logic here
+                    this.submitStatus = 'PENDING'
+                    this.$http.post('', this.factoryinfo) 
                     .then(response => {
                         console.log(response);
                     }, error =>{
                         console.log(error);
                     });
+                }
             },
             fetchData() {
-                $('#factorytable').removeClass('hidden');
-                $('#factorytable').addClass('visiable');
                 this.$http.get('')
                     .then(response => {
                         return response.json();
@@ -205,6 +221,6 @@
         },
     }
 </script>
-<style>
-.visiable{visibility: visible;}
+<style scoped>
+.error{color:#FF0000;}
 </style>

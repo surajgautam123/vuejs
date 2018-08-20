@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import Vuelidate from 'vuelidate';
 import App from './App.vue'
@@ -16,7 +17,7 @@ Vue.use(VueChartkick, { Chartkick })
 import VueGoodTable from 'vue-good-table';
 Vue.use(VueGoodTable);
 
-
+Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 
@@ -24,6 +25,8 @@ const router = new VueRouter({
 	mode: 'history',
 	routes
 });
+
+Vue.http.options.root = 'https://tangobms.firebaseio.com/data.json';
 
 new Vue({
   el: '#app',
