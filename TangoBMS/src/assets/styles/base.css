@@ -129,6 +129,8 @@ body table.table>thead>tr.ng-table-filters th input{font-weight:500;height:24px;
 .total-value h5 span.ammount-section{font-size:2.5rem;font-weight:600;margin-bottom:5px!important;margin-top:15px;}
 .costing-tbl-wrapper span h4{float:left;}
 .form-inline-vtop.form-inline .form-group{vertical-align:top;}
+/*.invalid input, .invalid select, .invalid textarea{border:1px solid #FF0000 !important;}*/
+.error{color:#FF0000;}
 
 /*Model*/
 .modal-header{padding:7px 15px 7px 30px;border-radius:5px 5px 0 0;}

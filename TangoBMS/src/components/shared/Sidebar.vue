@@ -19,7 +19,7 @@
                             <li class="divider"></li>
                             <li><router-link to="/change-password">Change Password</router-link></li>
                             <li class="divider"></li>
-                            <li><router-link to="/login">Logout</router-link></li>
+                            <li><router-link v-if="!authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link></li>
                         </ul>
                     </div>
                 </div>
@@ -65,12 +65,16 @@
 
 <script>
 	export default {
-		data: function() {
+		data() {
             return {
+                authenticated: false,
                 isActive: true
             }
         },
         methods: {
+            logout() {
+                this.authenticated = false;
+            },
             minimalize(){
                 // Check value
                 if(this.isActive){
