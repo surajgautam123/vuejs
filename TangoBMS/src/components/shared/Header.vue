@@ -3,7 +3,7 @@
         <div class="color-line"></div>
         <div id="logo"><span> Tango BMS </span> </div>
         <nav role="navigation">
-            <div class="header-link hide-menu" ng-click="minimalize()"><i class="fa fa-bars"></i></div>
+            <div class="header-link hide-menu" @click="minimalize()"><i class="fa fa-bars"></i></div>
             <div class="small-logo">
                 <span class="text-primary">Tango BMS</span>
             </div>
@@ -28,7 +28,7 @@
             <div class="navbar-right">
                 <ul class="nav navbar-nav no-borders">
                     <li uib-dropdown>
-                        <a href="#" uib-dropdown-toggle>
+                        <a href="#" data-toggle="dropdown">
                             <i class="pe-7s-speaker"></i>
                         </a>
                         <ul uib-dropdown-menu class="hdropdown notification animated flipInX dropdown-menu">
@@ -51,7 +51,7 @@
                         </ul>
                     </li>
                     <li>
-                        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace><i class="pe-7s-upload pe-rotate-90"></i></router-link>
+                        <router-link to="/login" v-on:click.native="logout()" replace><i class="pe-7s-upload pe-rotate-90"></i></router-link>
                     </li>
                 </ul>
             </div>
@@ -60,5 +60,29 @@
 </template>
 
 <script>
-
+    export default {
+        data() {
+            return {
+                submitted: false,
+                authenticated: false,
+                isActive: true
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            },
+            minimalize(){
+                // Check value
+                if(this.isActive){
+                    this.isActive = false;
+                }else{
+                    this.isActive = true;
+                }
+            }
+        }
+    }
 </script>

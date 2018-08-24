@@ -65,7 +65,8 @@ export default {
       minLength: minLength(4)
     },
     // email: {
-    //   required
+    //   required,
+    //   email
     // },
     password: {
       required,

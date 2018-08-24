@@ -1,5 +1,6 @@
 <template>
     <div id="app" v-bind:class="[isActive ? 'show-sidebar' : 'hide-sidebar']">
+    	<!-- Start: Header -->
         <!-- <app-header v-if="authenticated"></app-header> -->
         <div id="header" v-if="authenticated">
 	        <div class="color-line"></div>
@@ -59,6 +60,8 @@
 	            </div>
 	        </nav>
 	    </div>
+	    <!-- End: Header -->
+
 	    <!-- Start: Sidebar -->
         <app-sidebar v-if="authenticated"></app-sidebar>
         <!-- End: Sidebar -->
