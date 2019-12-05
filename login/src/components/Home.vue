@@ -1,8 +1,31 @@
 <template>
   <div>
     <h3>The Home Page</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <select class="form-control" id="select" @change="selectUser()">
+          <option>Select</option>
+          <option v-bind:value="option.id" :id="option.id" v-model="option.id" v-for="option in selectList">
+            {{option.name}}
+          </option>
+          <option id="all">All</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" v-if="userDetail != ''">
+      <div class="col-md-4" v-for="detail in userDetail">
+        <div class="card mt-4">
+          <img :src="detail.avatar" class="card-img-top" alt="" />
+          <div class="card-body">
+            <h5 class="card-title">{{detail.name}}</h5>
+            <p>{{detail.createdAt}}</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <hr>
-    <p>sdf asdf afsafs adfasfadf asdkf ;jflsa dfjasfjas;fj;lasfja;ldfjask fjas;dfjs dfasjdfasjf  asdfjsafjda s</p>
+    <p>Below data is coming from Firebase API</p>
     <table>
       <tr>
         <th>Username</th>
@@ -24,22 +47,43 @@ export default {
     return{
       name: '',
       password: '',
-      users: []
+      users: [],
+      selectList: [],
+      userDetail: []
     }
   },
+  mounted(){
+    this.showUserList();
+    this.userDetails();
+  },
   created(){
-    axios.get('/users.json')
+    axios.get('https://vuelogin-ffdba.firebaseio.com/users.json')
       .then(res => {
-        console.log(res)
-        const data = res.data
-        for (let key in data){
-          const user = data[key]
-          user.id = key
-          this.users.push(user)
-        }
-        console.log("Suraj ", this.users);
+        //console.log(res)
+        this.users = res.data
       })
       .catch(error => console.log(error))
+  },
+  methods: {
+    showUserList: function(){
+      axios.get('http://5da80c2523fa740014697bf3.mockapi.io/users')
+      .then(respone => {
+        this.selectList = respone.data;
+        console.log("selectList", this.selectList)
+      })
+      .catch(error => console.log(error))
+    },
+    userDetails: function(){
+      axios.get('http://5da80c2523fa740014697bf3.mockapi.io/users')
+      .then(respone => {
+        this.userDetail = respone.data;
+      })
+      .catch(error => console.log(error))
+    },
+    selectUser: function(event){
+      console.log(this.option.id);
+      console.log("Clicked!!");
+    }
   }
 }
 </script>
